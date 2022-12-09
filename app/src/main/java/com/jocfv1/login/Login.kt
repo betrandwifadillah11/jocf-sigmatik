@@ -1,6 +1,8 @@
 package com.jocfv1.login
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
@@ -10,11 +12,16 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.jocfv1.R
 import com.jocfv1.ui.theme.Jocfv1Theme
 import com.jocfv1.ui.theme.biru
 
@@ -32,6 +39,22 @@ fun LoginScreen(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        Image(painter = painterResource(id = R.drawable.daftar), contentDescription = "",
+            modifier = Modifier
+                .size(200.dp)
+                .padding(top = 20.dp).padding(bottom = 20.dp)
+        )
+
+        Text(
+            text = "Mohon Isi Data Akun Anda\n" +
+                    "Untuk Proses Masuk",
+            fontSize = 15.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(bottom = 20.dp)
+
+        )
+
         Text(
             text = "Masuk",
             style = MaterialTheme.typography.h4,
@@ -84,7 +107,14 @@ fun LoginScreen(
         )
         
         Button(
-            onClick = { loginViewModel?.loginUser(context) }
+            onClick = { loginViewModel?.loginUser(context) },
+            colors = ButtonDefaults.
+            buttonColors(backgroundColor = biru),
+            shape = CircleShape,
+            modifier = Modifier
+                .width(180.dp)
+                .height(70.dp)
+                .padding(top = 30.dp)
         ) {
             Text(
                 text = "Masuk"
@@ -132,6 +162,21 @@ fun SignUpScreen(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Image(painter = painterResource(id = R.drawable.daftar), contentDescription = "",
+            modifier = Modifier
+                .size(200.dp)
+                .padding(top = 20.dp).padding(bottom = 20.dp)
+        )
+
+        Text(
+            text = "Mohon Isi Data Akun Anda\n" +
+                    "Untuk Proses Pendaftaran",
+            fontSize = 15.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(bottom = 20.dp)
+
+        )
+
         Text(
             text = "Daftar",
             style = MaterialTheme.typography.h4,
@@ -202,7 +247,15 @@ fun SignUpScreen(
             isError = isError
         )
 
-        Button(onClick = { loginViewModel?.createUser(context) }) {
+        Button(onClick = { loginViewModel?.createUser(context) },
+            colors = ButtonDefaults.
+            buttonColors(backgroundColor = biru),
+            shape = CircleShape,
+            modifier = Modifier
+                .width(180.dp)
+                .height(70.dp)
+                .padding(top = 30.dp)
+        ) {
             Text(text = "Daftar")
         }
 

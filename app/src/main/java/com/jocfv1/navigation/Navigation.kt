@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.jocfv1.home.Home
+import com.jocfv1.home.Dashbor
 import com.jocfv1.login.LoginScreen
 import com.jocfv1.login.LoginViewModel
 import com.jocfv1.login.SignUpScreen
@@ -17,8 +17,14 @@ enum class LoginRoutes{
 
 enum class HomeRoutes{
     Home,
-    Dashboard,
-    ProfileTeam
+}
+
+enum class DashborRoutes{
+    Dashbor
+}
+
+enum class ProdukRoutes{
+    Produk
 }
 
 
@@ -33,7 +39,7 @@ fun Navigation(
     ){
         composable(route = LoginRoutes.Signin.name){
             LoginScreen(onNavToHomePage = {
-                navController.navigate(HomeRoutes.Home.name){
+                navController.navigate(DashborRoutes.Dashbor.name){
                     launchSingleTop = true
                     popUpTo(route = LoginRoutes.Signin.name){
                         inclusive = true
@@ -53,7 +59,7 @@ fun Navigation(
 
         composable(route = LoginRoutes.Signup.name){
             SignUpScreen(onNavToHomePage = {
-                navController.navigate(HomeRoutes.Home.name){
+                navController.navigate(DashborRoutes.Dashbor.name){
                     popUpTo(LoginRoutes.Signup.name){
                         inclusive = true
                     }
@@ -67,8 +73,16 @@ fun Navigation(
             }
         }
 
+        composable(route = DashborRoutes.Dashbor.name){
+            Dashbor()
+        }
+
         composable(route = HomeRoutes.Home.name){
             Home()
+        }
+
+        composable(route = ProdukRoutes.Produk.name){
+            Produk()
         }
     }
 }

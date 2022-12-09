@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">jocfv1</string>
+    <string name="title_activity_menu_home">MenuHome</string>
+    <string name="title_activity_menu_produk">MenuProduk</string>
 </resources>
